@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Caravan Generator</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Caravan Generator</h1>
+    </header>
+
+    <div class="body">
+        <div class="main">
+            <div id="showOnEnd">
+                <button type="button" id="link" class="btn">Create Branch</button>
+                <button type="button" id="newConvo" class="btn">Create Conversation</button>
+            </div>
+
+            <div class="container">
+                <form autocomplete="off" id="conversation-create">
+                    <label class="tit">Title:</label>
+                    <div class="autocomplete">
+                        <input type="text" id="title">
+                    </div>
+                    <br>
+                    <br>
+                    <button type="submit" class="btn">Create Conversation</button>
+                </form>
+            </div>
+
+            <div class="container">
+                <form id="statement-type">
+                    <div class="value tit">
+                        <label>Conversation: </label>
+                        <label id="current-conversation">Title</label>
+                    </div>
+                    <div class="value">
+                        <label>Speaker:</label>
+                        <select id="speaker">
+                            <option value="none">None</option>
+                            <option value="Player">Player</option>
+                            <option value="Phantom">Phantom</option>
+                            <option value="Shade">Shade</option>
+                            <option value="Sammy">Sammy</option>
+                            <option value="Dak9">Dak9</option>
+                            <option value="Saylor">Saylor</option>
+                            <option value="Fischer">Fischer</option>
+                            <option value="Asgardian Delegate">Asgardian Delegate</option>
+                            <option value="Bartender">Bartender</option>
+                            <option value="Stranger">Stranger</option>
+                            <option value="???">???</option>
+
+                        </select>
+                    </div>
+                    <div class="value">
+                        <label>Change Background:</label>
+                        <select id="background">
+                            <option value="none">None</option>
+                            <option value="fade_out">Fade Out</option>
+                            <option value="Melusine">Melusine</option>
+                            <option value="Car">Car</option>
+                            <option value="City">City</option>
+                            <option value="sammy_bar">Ol Sammy</option>
+                        </select>
+                    </div>
+                    <div class="value">
+                        <label>Sprite 1:</label>
+                        <select id="sprite1">
+                            <option value="none">None</option>
+                            <option value="Sammy_Idle">Sammy_Idle</option>
+                            <option value="Shade_Idle">Shade_Idle</option>
+                            <option value="Dak9_Idle">Dak9_Idle</option>
+                            <option value="Phantom_Idle">Phantom_Idle</option>
+                        </select>
+                    </div>
+                    <div class="value">
+                        <label>Sprite 2:</label>
+                        <select id="sprite2">
+                            <option value="none">None</option>
+                            <option value="Sammy_Idle">Sammy_Idle</option>
+                            <option value="Shade_Idle">Shade_Idle</option>
+                            <option value="Dak9_Idle">Dak9_Idle</option>
+                            <option value="Phantom_Idle">Phantom_Idle</option>
+                        </select>
+                    </div>
+                    <div class="value">
+                        <label>Dialogue</label> <br>
+                        <textarea name="dialogue" id="dialogue" cols="30" rows="2" placeholder="Dialogue..."></textarea>
+                        <button type="submit" class="btn">Add Statement</button>
+                    </div>
+                    <div class="value">
+                        <textarea spellcheck="false" readonly="true" cols="60" rows="20" id="conversationOutput"> </textarea>
+                    </div>
+                    <div class="value">
+                        <label>Change Scene: </label>
+                        <input type="text" id="sceneName">
+                    </div>
+                </form>
+
+
+            </div>
+
+            <div class="container">
+                <form autocomplete="off" id="branch-create">
+                    <div class="value">
+                        <label>Home Convo:</label>
+                        <div class="autocomplete">
+                            <input type="text" id="homeConvo">
+                        </div>
+                    </div>
+                    <div class="value">
+                        <label>Destination Convo:</label>
+                        <div class="autocomplete">
+                            <input type="text" id="destinationConvo">
+                        </div>
+                    </div>
+                    <div class="value">
+                        <label>Display Name:</label>
+                        <input type="text" id="displayName">
+                    </div>
+                    <button type="submit" class="btn">Create Branch</button>
+                </form>
+            </div>
+
+            <div class="container" id="addToBranchForm">
+                <div id="branch-add-to">
+                    <div class="value">
+                        <label>Home Convo:</label>
+                        <label id="current-home-convo">HC</label>
+                    </div>
+                    <div class="value">
+                        <label>Destination Convo:</label>
+                        <label id="current-destination-convo">DC</label>
+                    </div>
+                    <div class="value">
+                        <label>Display Name:</label>
+                        <label id="current-display-name">DN</label>
+                    </div>
+                    <br>
+                    <div id="btn-mar">
+                        <button type="button" id="var" class="btn">+Var</button>
+                        <div id="var-menu">
+
+                        </div>
+                        <div id="exp-menu"></div>
+                        <button type="button" id="exp" class="btn">+Exp</button>
+                    </div>
+                </div>
+
+
+                <form id="varMenu" autocomplete="off">
+                    <div class="value">
+                        <label>Operation:</label>
+                        <select id="operation">
+                            <option value="set">Set</option>
+                            <option value="increase">Increase</option>
+                            <option value="decrease">Decrease</option>
+                        </select>
+                    </div>
+                    <div class="value">
+                        <label>Variable:</label>
+                        <div class="autocomplete">
+                            <input type="text" id="variable">
+                        </div>
+                    </div>
+                    <div class="value">
+                        <label>Value:</label>
+                        <input type="number" min="0" id="value">
+                    </div>
+                    <button type="submit" id="addVar" class="btn mar-10">Add Var</button>
+                </form>
+
+                <form id="expMenu" autocomplete="off">
+                    <div class="value">
+                        <label>Left Hand:</label>
+                        <div class="autocomplete">
+                            <input type="text" id="leftHand">
+                        </div>
+                    </div>
+                    <div class="value">
+                        <label>Comparison:</label>
+                        <select id="comparison">
+                            <option value="eql">Equal to</option>
+                            <option value="greater">Greater than</option>
+                            <option value="lesser">Less than</option>
+                            <option value="dif">Different to</option>
+                        </select>
+                    </div>
+                    <div class="value">
+                        <label>Right Hand:</label>
+                        <input type="number" id="rightHand">
+                    </div>
+                    <button type="submit" id="addExp" class="btn mar-10">Add Exp</button>
+                </form>
+
+                <button id="cancel" class="btn mar-10">Cancel</button>
+
+                <br>
+                <div id="branchPlus">
+                    <textarea spellcheck="false" readonly="true" name="branchOutput" id="branchOutput" cols="50" rows="29"></textarea>
+                    <button type="button" id="completeBranch" class="btn mar-10">Complete Branch</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="output">
+            <button type="button" id="complete" class="btn">End Conversation</button>
+
+            <br>
+            <textarea spellcheck="false" name="finalOutput" id="finalOutput" cols="40" rows="40"></textarea>
+            <button type="button" id="copyText" class="btn">Copy</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Copyright &copy; 2018 Travelling Merchant LLC</p>
+    </footer>
+
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
